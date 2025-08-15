@@ -30,19 +30,19 @@ export const route: Route = {
     radar: [
         {
             source: ['kemono.cr/'],
-            target: '/kemono',
+            target: '',
         },
         {
             source: ['kemono.cr/:source/user/:id'],
-            target: '/kemono/:source/:id',
+            target: '/:source/:id',
         },
         {
             source: ['kemono.cr/:source/user/:id/announcements'],
-            target: '/kemono/:source/:id/announcements',
+            target: '/:source/:id/announcements',
         },
         {
             source: ['kemono.cr/:source/user/:id/fancards'],
-            target: '/kemono/:source/:id/fancards',
+            target: '/:source/:id/fancards',
         },
     ],
     name: 'Posts',
@@ -94,7 +94,7 @@ function buildApiUrl(source: string, userId?: string, contentType?: string): str
     }
 
     const basePath = `${KEMONO_API_URL}/${source}/user/${userId}`;
-    return contentType ? `${basePath}/${contentType}` : basePath;
+    return contentType ? `${basePath}/${contentType}` : `${basePath}/posts`;
 }
 
 function buildFrontendUrl(source: string, userId?: string, contentType?: string): string {
